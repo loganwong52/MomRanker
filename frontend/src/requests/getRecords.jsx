@@ -11,9 +11,11 @@
 const getRecordsEndpoint = 'http://localhost:5173/getData';
 
 export default async function getRecords() {
+    console.log("start of getRecords")
     const response = await fetch(getRecordsEndpoint);
     const jsonResponse = await response.json();
 
+    console.log("got the json response!")
     console.log(jsonResponse);
 
     let uniqueKey, name, photo;
@@ -28,7 +30,7 @@ export default async function getRecords() {
             return (
                 <li key={uniqueKey}>
                     <b>{name}</b>
-                    their photo: {photo}
+                    {photo}
                 </li>
             )
         }

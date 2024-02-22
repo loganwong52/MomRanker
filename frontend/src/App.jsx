@@ -57,6 +57,7 @@ function App() {
   // 2nd = Array of dependencies to control when effect is to be executed after mounting the component; Empty array = only invoke effect once
 
   useEffect(() => {
+    console.log("Im right here")
     getRecords().then(
       result => setListItems(result)
     );

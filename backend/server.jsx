@@ -21,7 +21,7 @@ app.use(express.json());
 // Set Cross-Origin Resource Sharing (CORS) to frontend React App
 app.use(cors());
 const corsOptions = {
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:5173'
 };
 
 // Append a query parameter to the request endpoint
@@ -48,17 +48,17 @@ app.get('/getData', cors(corsOptions), async (req, res) => {
 /* Add a new route for a POST request using singleRecordEndpoint in the section below */
 // - - - - - - - START - - - - - - - -
 
-// This runs if a POST request calls for localhost:5000/postData
+// This runs if a POST request calls for localhost:5173/postData
 
 app.post('/postData', cors(corsOptions), async (req, res) => {
     const requestBody = {
         'app': appID,
         'record': {
-            'title': {
-                'value': req.body.title
+            'name': {
+                'value': req.body.name
             },
-            'author': {
-                'value': req.body.author
+            'photo': {
+                'value': req.file.buffer.toString('base64') // Convert the file buffer to base64 string
             }
         }
     };

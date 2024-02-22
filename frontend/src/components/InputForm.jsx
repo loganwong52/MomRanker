@@ -49,7 +49,7 @@ function InputForm(props) {
                     <input type="file" accept="image/*" onChange={handlePhotoChange} />
 
                 </div>
-                <button type="button" onClick={() => buttonClick(name, photo)}>Post to Kintone</button>
+                <button type="button" onClick={() => buttonClick(name, photo)}>Send it</button>
             </form>
         </div>
     );
