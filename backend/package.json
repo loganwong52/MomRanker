@@ -2,10 +2,10 @@
     "name": "backend",
     "version": "1.0.0",
     "description": "Express server that makes the Kintone API calls",
-    "main": "server.js",
+    "main": "server.jsx",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon --watch .env --watch ../frontend server.js"
+        "start": "nodemon --watch .env --watch ../frontend server.jsx"
     },
     "author": "",
     "license": "ISC",
