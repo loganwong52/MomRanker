@@ -3,50 +3,50 @@
 // Import required files
 import React, { useState } from 'react';
 
-import getRecords from '../requests/getRecords.js';
-import postRecord from '../requests/postRecord.js';
+import getRecords from '../requests/getRecords.jsx';
+import postRecord from '../requests/postRecord.jsx';
 
 function InputForm(props) {
 
     /* Create the component that submits a POST request */
     // - - - - - - - START - - - - - - - -
 
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
+    const [name, setName] = useState('');
+    const [photo, setPhoto] = useState('');
 
-    function buttonClick(title, author) {
-        postRecord(title, author)
+    function buttonClick(name, photo) {
+        postRecord(name, photo)
             .then(() => getRecords())
             .then(result => props.setListItems(result))
     }
 
-    function handleTitleChange(event) {
-        setTitle(event.target.value);
+    function handlenameChange(event) {
+        setName(event.target.value);
     }
-    function handleAuthorChange(event) {
-        setAuthor(event.target.value);
+    function handlephotoChange(event) {
+        setPhoto(event.target.value);
     }
 
     return (
         <div>
             <form>
                 <div>
-                    <label>Title: </label>
+                    <label>Name: </label>
                     <input
-                        type="text"
-                        value={title}
-                        onChange={handleTitleChange}
+                        type="name"
+                        value={name}
+                        onChange={handlenameChange}
                     />
                 </div>
                 <div>
-                    <label>Author: </label>
+                    <label>Photo: </label>
                     <input
-                        type="text"
-                        value={author}
-                        onChange={handleAuthorChange}
+                        type="image"
+                        value={photo}
+                        onChange={handlephotoChange}
                     />
                 </div>
-                <button type="button" onClick={() => buttonClick(title, author)}>Post to Kintone</button>
+                <button type="button" onClick={() => buttonClick(name, photo)}>Post to Kintone</button>
             </form>
         </div>
     );

@@ -22,10 +22,15 @@ export default async function getRecords() {
     const ListItemArray = jsonResponse.records.map(
         record => {
             uniqueKey = record.Record_number.value;
-            name = record.title.value;
-            photo = record.author.value;
+            name = record.name.value;
+            photo = record.photo.value;
 
-            return <li key={uniqueKey}>Mom name: <b>{name}</b> their photo: {photo}</li>
+            return (
+                <li key={uniqueKey}>
+                    <b>{name}</b>
+                    their photo: {photo}
+                </li>
+            )
         }
     );
 
