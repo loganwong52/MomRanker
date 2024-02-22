@@ -20,10 +20,10 @@ function InputForm(props) {
             .then(result => props.setListItems(result))
     }
 
-    function handlenameChange(event) {
+    function handleNameChange(event) {
         setName(event.target.value);
     }
-    function handlephotoChange(event) {
+    function handlePhotoChange(event) {
         setPhoto(event.target.value);
     }
 
@@ -35,16 +35,19 @@ function InputForm(props) {
                     <input
                         type="name"
                         value={name}
-                        onChange={handlenameChange}
+                        onChange={handleNameChange}
                     />
                 </div>
                 <div>
                     <label>Photo: </label>
-                    <input
+
+                    {/* <input
                         type="image"
                         value={photo}
-                        onChange={handlephotoChange}
-                    />
+                        onChange={handlePhotoChange}
+                    /> */}
+                    <input type="file" accept="image/*" onchange="preview_image(event)" />
+
                 </div>
                 <button type="button" onClick={() => buttonClick(name, photo)}>Post to Kintone</button>
             </form>
