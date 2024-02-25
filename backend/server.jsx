@@ -4,7 +4,7 @@
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
-const PORT = 5173;
+const PORT = 5000;
 const app = express();
 
 // Hide sensitive info in a .env file with dotenv

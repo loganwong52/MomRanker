@@ -8,11 +8,12 @@
  */
 
 // Declare the GET endpoint defined in our Express server
-const getRecordsEndpoint = 'http://localhost:5173/getData';
+const getRecordsEndpoint = 'http://localhost:5000/getData';
 
 export default async function getRecords() {
     console.log("start of getRecords")
     const response = await fetch(getRecordsEndpoint);
+    console.log("response: ", response)
     const jsonResponse = await response.json();
 
     console.log("got the json response!")
