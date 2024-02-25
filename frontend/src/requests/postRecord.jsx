@@ -17,7 +17,9 @@ export default async function postRecord(name, photo) {
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-Cybozu-Authorization': 'bGF3MzA4MkByaXQuZWR1Ok1vbWFpbjEyMzQh'
+
         },
         body: JSON.stringify(recordBodyParameters)
     }

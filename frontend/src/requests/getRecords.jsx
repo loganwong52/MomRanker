@@ -11,7 +11,14 @@
 const getRecordsEndpoint = 'http://localhost:5000/getData';
 
 export default async function getRecords() {
-    const response = await fetch(getRecordsEndpoint);
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-Cybozu-Authorization': 'bGF3MzA4MkByaXQuZWR1Ok1vbWFpbjEyMzQh'
+        }
+    }
+
+    const response = await fetch(getRecordsEndpoint, options);
     const jsonResponse = await response.json();
     console.log("jsonResponse:", jsonResponse);
 
@@ -22,18 +29,6 @@ export default async function getRecords() {
         record => {
             uniqueKey = record.Record_number.value;
             name = record.name.value;
-
-            // Kintone REST API Request calling the Kintone Get Record API
-            kintone.api(kintone.api.url('/k/v1/records.json', true), 'GET', body, function (success) {
-                // The function called on success
-                var records = success.records;
-                var recordSize = records.length + 1;
-                window.alert('There are now currently ' + recordSize + ' records in this App.');
-            }, function (error) {
-                // The function called on error
-                var errormsg = 'There was an error when retrieving the data.';
-                window.alert(errormsg);
-            });
 
             photo = new Image();
             // photo.src = record.photo.value[0].name;
