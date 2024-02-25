@@ -10,7 +10,7 @@ export default async function postRecord(name, photo) {
 
     const recordBodyParameters = {
         'name': name,
-        photo // ES6 syntax that functions the same as above
+        'photo': photo // ES6 syntax that functions the same as above
     }
 
     const options = {

@@ -57,7 +57,6 @@ function App() {
   // 2nd = Array of dependencies to control when effect is to be executed after mounting the component; Empty array = only invoke effect once
 
   useEffect(() => {
-    console.log("Im right here")
     getRecords().then(
       result => setListItems(result)
     );
@@ -66,10 +65,6 @@ function App() {
   return (
     // JSX includes html-like syntax
     <div className="App">
-      <p>
-        Hello world
-      </p>
-
       <ListRecords list={listItems} />
       <InputForm setListItems={setListItems} /> {/* Form Component Appended */}
     </div>

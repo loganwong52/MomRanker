@@ -11,28 +11,39 @@
 const getRecordsEndpoint = 'http://localhost:5000/getData';
 
 export default async function getRecords() {
-    console.log("start of getRecords")
     const response = await fetch(getRecordsEndpoint);
-    console.log("response: ", response)
     const jsonResponse = await response.json();
+    console.log("jsonResponse:", jsonResponse);
 
-    console.log("got the json response!")
-    console.log(jsonResponse);
-
-    let uniqueKey, name, photo;
+    let uniqueKey, name, photo, alt, src, rating;
 
     // Map (1->1 transform) an array of records from the formatted API response to an array of list items
     const ListItemArray = jsonResponse.records.map(
         record => {
             uniqueKey = record.Record_number.value;
             name = record.name.value;
-            photo = record.photo.value;
+            photo = new Image();
+            // photo.src = record.photo.value[0].name;
+            alt = "photo of " + name;
+            src = "https://momain.kintone.com/k/v1/file.json?filekey=" + record.photo.value[0].fileKey;
+            photo.src = src;
+            rating = record.rating.value
+
+            // console.log("record.photo type: ", typeof (record.photo))
+            // console.log("photo name: ", record.photo.value[0]);
+            console.log("photo name: ", record.photo.value[0].fileKey);
+            // console.log("photo: ", photo);
+            console.log("photo.src: ", src);
+
 
             return (
                 <li key={uniqueKey}>
                     <b>{name}</b>
-                    {photo}
-                </li>
+                    <img src={src}></img>
+                    <b>{rating}</b>
+                </li >
+
+
             )
         }
     );

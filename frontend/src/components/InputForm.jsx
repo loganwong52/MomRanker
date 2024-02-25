@@ -13,6 +13,8 @@ function InputForm(props) {
 
     const [name, setName] = useState('');
     const [photo, setPhoto] = useState('');
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
 
     function buttonClick(name, photo) {
         postRecord(name, photo)
@@ -21,10 +23,28 @@ function InputForm(props) {
     }
 
     function handleNameChange(event) {
+        if (event.target.value.length > 0 & photo.length > 0) {
+            // Enable button
+            setIsButtonDisabled(false)
+        }
+        else {
+            // disable button
+            setIsButtonDisabled(true)
+        }
+
         setName(event.target.value);
     }
     function handlePhotoChange(event) {
+        if (event.target.value.length > 0 & name.length > 0) {
+            // Enable button
+            setIsButtonDisabled(false)
+        }
+        else {
+            // disable button
+            setIsButtonDisabled(true)
+        }
         setPhoto(event.target.value);
+        console.log(event.target.value)
     }
 
     return (
@@ -38,18 +58,13 @@ function InputForm(props) {
                         onChange={handleNameChange}
                     />
                 </div>
+
+                <label>Photo: </label>
+                <input type="file" accept="image/*" onChange={handlePhotoChange} />
+
                 <div>
-                    <label>Photo: </label>
-
-                    {/* <input
-                        type="image"
-                        value={photo}
-                        onChange={handlePhotoChange}
-                    /> */}
-                    <input type="file" accept="image/*" onChange={handlePhotoChange} />
-
+                    <button type="button" disabled={isButtonDisabled} onClick={() => buttonClick(name, photo)}>Send it</button>
                 </div>
-                <button type="button" onClick={() => buttonClick(name, photo)}>Send it</button>
             </form>
         </div>
     );
