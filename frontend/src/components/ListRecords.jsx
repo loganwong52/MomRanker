@@ -1,7 +1,7 @@
 // ListRecords.js - List component - Creates a list from the list items array
 
 // Accepts a “props” (i.e. properties) object passed from parent component
-// Returns a React element
+// Returns a React elements
 
 export default function ListRecords(props) {
 

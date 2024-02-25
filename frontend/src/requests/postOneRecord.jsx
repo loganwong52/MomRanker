@@ -3,15 +3,13 @@
 // Connect with the Express server
 const addRecordEndpoint = 'http://localhost:5000/postData';
 
-export default async function postRecord(name, photo) {
+export default async function postOneRecord(rating) {
 
     /* Pass the POST API request from React to Express server */
     // - - - - - - - START - - - - - - - -
 
     const recordBodyParameters = {
-        'name': name,
-        'photo': photo,
-        'rating': 0,
+        'rating': rating
     }
 
     const options = {

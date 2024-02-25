@@ -15,13 +15,26 @@ export default async function getRecords() {
     const jsonResponse = await response.json();
     console.log("jsonResponse:", jsonResponse);
 
-    let uniqueKey, name, photo, alt, src, rating;
+    let uniqueKey, name, xhr, photo, alt, src, rating;
 
     // Map (1->1 transform) an array of records from the formatted API response to an array of list items
     const ListItemArray = jsonResponse.records.map(
         record => {
             uniqueKey = record.Record_number.value;
             name = record.name.value;
+
+            // Kintone REST API Request calling the Kintone Get Record API
+            kintone.api(kintone.api.url('/k/v1/records.json', true), 'GET', body, function (success) {
+                // The function called on success
+                var records = success.records;
+                var recordSize = records.length + 1;
+                window.alert('There are now currently ' + recordSize + ' records in this App.');
+            }, function (error) {
+                // The function called on error
+                var errormsg = 'There was an error when retrieving the data.';
+                window.alert(errormsg);
+            });
+
             photo = new Image();
             // photo.src = record.photo.value[0].name;
             alt = "photo of " + name;
